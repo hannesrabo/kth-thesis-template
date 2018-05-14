@@ -13,5 +13,7 @@ This project works on overleaf. You will need to manually set the compiler engin
 # Contact
 Please send me an email if you have any problem with this repo. I will try to help if I can
 
+email: hannes.rabo@gmail.com or hrabo@kth.se
+
 # Final Remark
 Good luck writing!
