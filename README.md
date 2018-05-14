@@ -4,6 +4,9 @@ This is a template for writing a bachelor thesis at KTH for the ICT School. It c
 # Images
 The images and text belongs to KTH but has been included in this repository to make it easier to use for students. You can use this repo with images in its entirety if you are writing a thesis that you intent to turn in to KTH.
 
+# Example
+The compiled report is included in this repo as an example. Look at [report_compiled.pdf](report_compiled.pdf).
+
 # Usage
 To compile this project, you will need to install XeLaTeX as this project is using special fonts to emulate the template from KTH. It you use regular LaTeX, it should still compile but positioning and fonts might be slightly wrong.
 
