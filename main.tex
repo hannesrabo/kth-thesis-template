@@ -1,19 +1,37 @@
 \documentclass[12pt]{article}
-% \usepackage[utf8]{inputenc}
 
+% Packages for layout and graphics
 \usepackage{eso-pic}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{setspace}
 
-%% appendix package
-%% \usepackage[toc]{appendix}
+% Fixing a bug where the page style changes for toc
+\usepackage{tocloft}
+\tocloftpagestyle{fancy}
+
+%% Used to make separate tocs for appendix and the rest of the document
 \usepackage{etoc}
 
 % Adding bib resources
-\usepackage[backend=bibtex, citestyle=ieee, bibstyle=ieee]{biblatex}
+% It seems like mendeley won't export the urldate to overleaf. 
+% This is on the other hand exported when we export a bib file
+% We need to add this
+\usepackage[
+	citestyle=ieee, 
+    bibstyle=ieee,
+    style=numeric-comp,
+    sorting=none,
+    sortcites=true
+    ]{biblatex}
+
 \addbibresource{ref.bib}
 
+% Count figures within chapters
+\usepackage{chngcntr}
+\counterwithin{figure}{section} 
+
+% Specify the margins
 \usepackage[a4paper, margin=3cm]{geometry}
 
 % Table formatting
@@ -30,6 +48,13 @@
 \subsectionfont{\sffamily\fontsize{13}{15}}
 \subsubsectionfont{\sffamily\fontsize{12}{15}}
 
+% Remove the title and make sure that the text is adjusted
+\usepackage{abstract}
+\setlength{\absleftindent}{0mm}
+\renewcommand{\abstractname}{\vspace{-\baselineskip}}
+\renewcommand{\abstractnamefont}{\sffamily\fontsize{14}{15}}
+\renewcommand{\abstracttextfont}{\normalfont\fontsize{12}{13}}
+
 % Renaming and setting style of table of contents
 \usepackage{tocloft}
 \renewcommand*\contentsname{Contents}
@@ -44,10 +69,6 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyfoot[R]{\footerfont\thepage}
 
-% Fixing a bug where the page style changes for toc
-\usepackage{tocloft}
-\tocloftpagestyle{fancy}
-
 % Making the command for placing text in random locations
 \newcommand\PlaceText[3]{%
 \begin{tikzpicture}[remember picture,overlay]
@@ -57,16 +78,24 @@
 }
 
 % Disable hyphenation
-% \tolerance=1
-% \emergencystretch=\maxdimen
-% \hyphenpenalty=10000
-% \hyphenpenalty=100
-% \hbadness=10000
+\pretolerance=10000
+\tolerance=2000 
+\emergencystretch=10pt
 
 % Clickable links
 \usepackage[hidelinks]{hyperref}
 
+% References with names
+\usepackage{nameref}
+
+% New line instead of indent for sections
+\usepackage[parfill]{parskip}
+
 \title{This is the main title}
+
+% Package for putting figures side by side
+\usepackage{subfig}
+
 
 \begin{document}
 \setstretch{1.4}
@@ -83,12 +112,14 @@
 \include{content}
 
 \newpage
+\textbf{If you are using mendeley to manage references, you might have to export them manually in the end as the automatic ways removes the "date accessed" field}
 \printbibliography
 
 \newpage
 \include{appendices}
 
 \newpage
+% This is the last page of the document
 \thispagestyle{empty}
 \AddToShipoutPictureBG*{%]
     \AtPageLowerLeft{%
