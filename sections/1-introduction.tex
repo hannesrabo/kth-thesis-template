@@ -1,18 +1,55 @@
-\section{Introduction }
-
-Example citation \cite{Jones2017}
+\section{Introduction}
 
 Provide a general introduction to the area for the degree project. Use references!
 
-Look at this sample table \ref{tab:sample-table-label}
+Link things together with references. This is a reference to a section: \ref{sec:background}.
+
+\subsection{Background}
+\label{sec:background}
+Present the background for the area. Give the context by explaining the parts that are needed to understand the degree project and thesis. (Still, keep in mind that this is an introductory part, which does not require too detailed description).
+
+Use references\footnote{You can also add footnotes if you want to clarify the content on the same page.}
+
+Detailed description of the area should be moved to Chapter 2, where detailed information about background is given together with related work. 
+
+This background presents background to writing a report in latex.
+
+
+Example citation \cite{Jones2017} or for two authors: \cite{Jones2017, Liu2017}
+
+Look at sample table \ref{tab:sample-table-label} for a table sample.
 
 \input{tables/sample-table}
 
-\subsection{Background}
-Present the background for the area. Give the context by explaining the parts that are needed to understand the degree project and thesis. (Still, keep in mind that this is an introductory part, which does not require too detailed description).
+Boxes can be used to organize content
 
-Use references
-Detailed description of the area should be moved to Chapter 2, where detailed information about background is given together with related work. 
+\begin{tcolorbox}[title={Development environment for prototype}]
+	\tt{
+		\textbf{Operating systems }\\
+		computer: Linux - kernel 4.18.5-arch1-1-ARCH\\
+		android phone: 8.1.0\\
+		~\\
+		\textbf{Build tools}\\
+		exp (build tool): version 55.0.4\\
+		~\\
+		...
+	}
+\end{tcolorbox}
+
+
+Multiple images can be placed side by side like this:
+\begin{figure}[ht]
+	\centering 
+	\subfloat[First subfigure]{\includegraphics[width=0.3\textwidth]{img/sample-image}
+		\label{fig:sample-image:1}}
+	\hfill
+	\subfloat[Second subfigure]{\includegraphics[width=0.3\textwidth]{img/sample-image}
+		\label{fig:sample-image:2}}
+	\hfill
+	\subfloat[Third subfigure]{\includegraphics[width=0.3\textwidth]{img/sample-image}
+		\label{fig:sample-image:3}}
+	\caption{\textit{General figure caption. The width might not add up to 1. Try make sure it adds up to 0.9 instead.}}
+\end{figure}
 
 \subsection{Problem}
 Present the problems found in the area. Preferable use and end this section with a question as a problem statement.
@@ -30,11 +67,14 @@ The goal means the goal of the degree project. Present following: the goal(s), d
 
 \subsubsection{Benefits, Ethics and Sustainability}
 Describe who will benefit from the degree project, the ethical issues (what ethical problems can arise) and the sustainability aspects of the project.
+
 Use references!
 
 \subsection{Methodology}
 Introduce, theoretically, the methodologies and methods that can be used in a project and, then, select and introduce the methodologies and methods that are used in the degree project. Must be described on the level that is enough to understand the contents of the thesis. 
+
 Use references!
+
 Preferably, the philosophical assumptions, research methods, and research approaches are presented here. Write quantitative / qualitative, deductive / inductive / abductive. Start with theory about methods, choose the methods that are used in the thesis and apply. 
 
 
@@ -50,54 +90,3 @@ Use references!
 
 \subsection{Outline}
 In text, describe what is presented in Chapters 2 and forward. Exclude the first chapter and references as well as appendix. 
-
-
-\newpage   
-
-
-\section{<Theoretical Background>}
-In this chapter, a detailed description about background of the degree project is presented together with related work. Discuss what is found useful and what is less useful. Use valid arguments. 
-
-Explain what and how prior work / prior research will be applied on or used in the degree project /work (described in this thesis). Explain why and what is not used in the degree project and give valid reasons for rejecting the work/research.
-
-Use references!
-
-\subsection{Use headings to break the text}
-Never use subtitles after each other without text in between the sections.
-
-\newpage
-\section{<Engineering-related content, Methodologies and Methods>}
-Describe the engineering-related contents (preferably with models) and the research methodology and methods that are used in the degree project. 
-
-\subsection{Engineering-related and scientific content:}
-Applying engineering-related and scientific skills; modeling, analyzing, developing, and evaluating engineering-related and scientific content; correct choice of methods based on problem formulation; consciousness of aspects relating to society and ethics (if applicable).
-
-As mentioned earlier, give a theoretical description of methodologies and methods and how these are applied in the degree project.
-
-\newpage
-\section{<The Work> }
-Describe the degree project. What did you actually do?
-
-\newpage
-\section{<Result> }
-Describe the results of the degree project.
-
-\newpage
-\section{<Conclusions> }
-Describe the conclusions (reflect on the whole introduction given in Chapter 1). 
-
-Discuss the positive effects and the drawbacks. 
-
-Describe the evaluation of the results of the degree project.
-
-Describe valid future work.  
-
-
-
-
-
-
-
-
-
-

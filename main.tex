@@ -1,132 +1,55 @@
 \documentclass[12pt]{article}
 
-% Packages for layout and graphics
-\usepackage{eso-pic}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usepackage{setspace}
+% This is all the packages and settings and so on.
+% It is using custom fonts that needs to be installed on the computer. If they are not present, they have to be added manually.
+\input{setup}
 
-% Fixing a bug where the page style changes for toc
-\usepackage{tocloft}
-\tocloftpagestyle{fancy}
+% Defining files for bibliography
+%\addbibresource{ref.bib}
+\addbibresource{references.bib}
+% Add a second bibliography file for the second author to allow
+% both to update it through the mendeley integration.
+% \addbibresource{ref-author-2.bib}
 
-%% Used to make separate tocs for appendix and the rest of the document
-\usepackage{etoc}
-
-% Adding bib resources
-% It seems like mendeley won't export the urldate to overleaf. 
-% This is on the other hand exported when we export a bib file
-% We need to add this
-\usepackage[
-	citestyle=ieee, 
-    bibstyle=ieee,
-    style=numeric-comp,
-    sorting=none,
-    sortcites=true
-    ]{biblatex}
-
-\addbibresource{ref.bib}
-
-% Count figures within chapters
-\usepackage{chngcntr}
-\counterwithin{figure}{section} 
-
-% Specify the margins
-\usepackage[a4paper, margin=3cm]{geometry}
-
-% Table formatting
-\usepackage{booktabs}
-
-% Specifying fonts
-\usepackage{fontspec}
-\setmainfont{Georgia} 
-\setsansfont{Arial}
-\newfontfamily\footerfont{Georgia}
-
-\usepackage{sectsty}
-\sectionfont{\sffamily\fontsize{14}{15}}
-\subsectionfont{\sffamily\fontsize{13}{15}}
-\subsubsectionfont{\sffamily\fontsize{12}{15}}
-
-% Remove the title and make sure that the text is adjusted
-\usepackage{abstract}
-\setlength{\absleftindent}{0mm}
-\renewcommand{\abstractname}{\vspace{-\baselineskip}}
-\renewcommand{\abstractnamefont}{\sffamily\fontsize{14}{15}}
-\renewcommand{\abstracttextfont}{\normalfont\fontsize{12}{13}}
-
-% Renaming and setting style of table of contents
-\usepackage{tocloft}
-\renewcommand*\contentsname{Contents}
-\renewcommand*\cfttoctitlefont{\fontsize{16}{0}\bf\sffamily}
-\renewcommand\cftsecfont{\fontsize{12}{0}\bf\sffamily}
-\renewcommand\cftsecpagefont{\fontsize{12}{0}\bf\sffamily}
-
-% Setting the style for header and footer.
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\fancyfoot[R]{\footerfont\thepage}
-
-% Making the command for placing text in random locations
-\newcommand\PlaceText[3]{%
-\begin{tikzpicture}[remember picture,overlay]
-\node[outer sep=0pt,inner sep=0pt,anchor=south west] 
-  at ([xshift=#1,yshift=-#2]current page.north west) {#3};
-\end{tikzpicture}%
-}
-
-% Disable hyphenation
-\pretolerance=10000
-\tolerance=2000 
-\emergencystretch=10pt
-
-% Clickable links
-\usepackage[hidelinks]{hyperref}
-
-% References with names
-\usepackage{nameref}
-
-% New line instead of indent for sections
-\usepackage[parfill]{parskip}
-
-\title{This is the main title}
-
-% Package for putting figures side by side
-\usepackage{subfig}
-
+% Defining document information
+\title{Template KTH Bachelor Thesis Report}
+\newcommand{\subtitle}{Subtitle}
+\author{<Author Name and Author Name>}
 
 \begin{document}
 \setstretch{1.4}
+
+% The front page of the document
 \include{title-page}
 
 \newpage
 \pagenumbering{roman}
 
-\include{abstracts-and-toc}
+\include{sections/0-pre-content}
 
-\newpage
+% The table of content
+\customtoc
+
+The content only includes the first level of sub-headings as the third level was less relevant in the scope of the entire report. This can be changed in the setup.tex file.
+
 \pagenumbering{arabic}
 
-\include{content}
+\include{sections/1-introduction}
+\include{sections/2-theoretical-background}
+\include{sections/3-method}
+\include{sections/4-work}
+\include{sections/5-results}
+\include{sections/6-conclusions}
+
+% \include{content}
 
 \newpage
+\addcontentsline{toc}{section}{References}
 \textbf{If you are using mendeley to manage references, you might have to export them manually in the end as the automatic ways removes the "date accessed" field}
 \printbibliography
 
-\newpage
-\include{appendices}
 
-\newpage
-% This is the last page of the document
-\thispagestyle{empty}
-\AddToShipoutPictureBG*{%]
-    \AtPageLowerLeft{%
-        \includegraphics[width=1.0\paperwidth]{img/kth-footer}%
-    }%
-}
-
-\PlaceText{20mm}{282mm}{\color{white}\fontsize{12}{0}\sffamily www.kth.se }
+\include{sections/appendices}
+\include{back-cover}
 
 \end{document}
